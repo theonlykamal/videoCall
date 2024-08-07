@@ -3,11 +3,15 @@ import './Mycss.css';
 import SideBar from './SideBar';
 import WorkArea from './WorkArea';
 import ChatArea from './ChatArea';
+import Welcome from './Welcome';
+import CreateGroups from './CreateGroups';
 
 function MainContainer() {
     return (<div className='main-container'>
         <SideBar />
-        <ChatArea props= {{name: "Person1", timeStamp: "today"}} />
+        <CreateGroups />
+        { /* <Welcome /> */ }
+        { /* <ChatArea props= {{name: "Person1", timeStamp: "today"}} /> */}
     </div>);
 }
 

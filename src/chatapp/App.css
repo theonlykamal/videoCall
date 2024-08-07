@@ -1,12 +1,11 @@
 * {
   margin: 0;
-  border-radius: 20px;
 }
 .App {
-  background-color: rgb(152, 240, 255);
+  background-color: rgb(138, 243, 241);
   min-height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
   
-  
-  justify-content: space-around;
 }

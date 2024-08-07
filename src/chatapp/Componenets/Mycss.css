@@ -1,5 +1,5 @@
 .main-container {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(183, 248, 247);
     height: 90vh;
     width: 90vw;
     display: flex;
@@ -39,6 +39,7 @@
     background-color: rgb(215, 250, 249);
     margin-left: 10px;
     font-size: 1.25rem;
+    color: black;
 }
 .chats {
     background-color: rgb(215, 250, 249);
@@ -49,12 +50,13 @@
 }
 .conversation-container{
     display: grid;
-    padding: 5px;
-    column-gap: 10px;
-    margin: 5px;
-    grid-template-columns: 32 auto auto;
-    grid-template-rows: auto auto;
-    border-radius: 20px;
+  grid-template-columns: 48px auto;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 .con-icon {
     grid-area: 1/1/3/2;
@@ -72,6 +74,8 @@
     border-radius: 50%;
     justify-self: center;
     align-self: center;
+    margin-left: 10px;
+    margin-right: 5px;
 }
 .con-title {
     grid-area: 1/2/2/4;
@@ -81,7 +85,7 @@
 }
 .con-lastMessage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
+    font-size: 1rem;
 }
 .con-timeStamp {
     justify-self:  flex-end;
@@ -104,8 +108,13 @@
     border-radius: 20px;
 }
 .message-container {
-    background-color: aquamarine;
+    background-color: rgb(215, 250, 249);
     flex: 1;
+    padding: 10px 10px;
+    margin: 10px;
+    border-radius: 20px;
+    overflow: scroll;
+    scrollbar-width: none;
 }
 .text-input-area {
     background-color: rgb(215, 250, 249);
@@ -120,4 +129,93 @@
     flex-direction: column;
     justify-content: center;
     flex: 1;
+}
+.other-message-container {
+    background-color: lightgrey;
+    padding: 10px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    width: max-content;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.messageBox {
+    display: flex;
+    background-color: rgb(198, 235, 198);
+    width: max-content;
+    padding: 10px 10px;
+    margin: 5px;
+    border-radius: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.self-message-container {
+    display: flex;
+    justify-content: flex-end;
+}
+.self-timestamp {
+    align-self: flex-end;
+    font-size: 0.75rem;
+    font-weight: lighter;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.welcome-logo {
+    height: 20vw;
+}
+.welcome-container {
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    border-bottom: 5px solid gray;
+    border-radius: 2px;
+}
+.createGroups-container {
+    flex: 0.7;
+    align-self: center;
+    padding: 20px 10px;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    background-color: rgb(215, 250, 249);
+
+}
+.login-container {
+    height: 100vh;
+    width: 100vw;
+    background-color: aquamarine;
+    border-radius: 20px;
+    display: flex;
+
+}
+.image-container {
+    flex: 0.3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.login-box {
+    flex: 0.7;
+    background-color: rgb(215, 250, 249);
+    border-radius: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    margin: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(29, 235, 166);
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
 }

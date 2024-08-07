@@ -21,7 +21,7 @@ const Main = () => {
             <Route exact path = '/notes' element = {<NotesApp />} />
             <Route exact path = '/chat' element = {<PApp />} />
         </Routes>
-    </BrowserRouter>
+    </BrowserRouter> 
   )
 }
 
