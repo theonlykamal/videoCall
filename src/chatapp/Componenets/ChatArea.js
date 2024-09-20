@@ -5,7 +5,8 @@ import SendIcon from '@mui/icons-material/Send';
 import MessageOthers from './MessageOthers';
 import MessageSelf from './MessageSelf';
 
-function ChatArea({ props }) {
+function ChatArea() {
+    var props = {name : "Test#1", lastMessage : "Last Message #1", timeStamp : "today"}
   return (
     <div className='chatarea-container'>
         <div className='chatarea-header'>
