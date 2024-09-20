@@ -7,7 +7,11 @@ import NightlightIcon from '@mui/icons-material/Nightlight';
 import SearchIcon from '@mui/icons-material/Search';
 import { IconButton } from '@mui/material';
 import ConversationItems from './ConversationItems';
+import { useNavigate } from 'react-router-dom';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 export default function SideBar() {
+  const navigate = useNavigate();
   const [conversations, setConversations] = useState([
     {
       name: "Test1",
@@ -16,7 +20,7 @@ export default function SideBar() {
     },
     {
       name: "Test2",
-      lastMessage: "Last Message #2",
+      lastMessage: "Last Message #2", 
       timeStamp: "today",
     },
     {
@@ -34,14 +38,14 @@ export default function SideBar() {
         </IconButton> 
         </div>
         <div>
-        <IconButton>
+        <IconButton onClick={() => {navigate('/app/users')}}>
         <PersonAddAlt1Icon />
         </IconButton>
-        <IconButton>
+        <IconButton onClick={() => {navigate('/app/groups')}}> 
         <GroupAddIcon />
         </IconButton>
-        <IconButton>
-        <NightlightIcon />
+        <IconButton  onClick = {() => {navigate('/app/create-groups')}}>
+          <AddCircleIcon />
         </IconButton>
         </div>
       </div>
@@ -53,7 +57,7 @@ export default function SideBar() {
       </div>
       <div className = 'sb-conversationItems'> 
         {conversations.map((conversation)=> {
-          return <ConversationItems props={conversation} key  = {conversation.name} />
+          return <ConversationItems props={conversation} key  = {conversation.name}/>
         })}
       </div>
     </div>
