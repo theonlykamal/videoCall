@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const server = "http://localhost:5000";
+  const server = "https://my-stop-api.vercel.app";
 
   const [showlogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(false);
