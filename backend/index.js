@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const { default: mongoose } = require("mongoose");
-const userRoutes = require("./Routes/userRoutes");
+
 const cors = require('cors');
 
 
@@ -23,6 +23,10 @@ dotenv.config();
 app.use(express.json());
 
 
+const userRoutes = require("./Routes/userRoutes");
+const chatRoutes = require("./Routes/chatRoutes");
+const messageRoutes = require("./Routes/messageRoutes");
+
 
 mongoose.connect(process.env.MONGO_URI);
 const connectDb = async () => {
@@ -41,6 +45,8 @@ app.get("/",(req,res) => {
     res.send("API is running12233");
 });
 app.use("/user",userRoutes);
+app.use("/chat",chatRoutes);
+app.use("/message",messageRoutes);
 
 
 

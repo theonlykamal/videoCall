@@ -9,7 +9,7 @@
 }
 .sidebar-container {
     
-    background-color: rgb(183, 248, 247);
+    background-color: rgb(44, 48, 46);
     flex: 0.3;
     display: flex;
     flex-direction: column;
@@ -28,6 +28,11 @@
     display: flex;
     justify-content: space-between;
 }
+.sb-conversationItems {
+    overflow: scroll;
+    scrollbar-width: none;
+
+}
 .search {
     background-color: rgb(215, 250, 249);
     border-radius: 20px;
@@ -45,6 +50,17 @@
     margin-left: 10px;
     font-size: 1.25rem;
     color: black;
+}
+
+.text-input-area-box {
+    outline-width: 0;
+    border: none;
+    font-size: 1.25;
+    background-color: rgb(215, 250, 249);
+    margin-left: 10px;
+    font-size: 1.25rem;
+    color: black;
+    width: 64vw;
 }
 .chats {
     background-color: rgb(215, 250, 249);

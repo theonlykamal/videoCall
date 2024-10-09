@@ -8,8 +8,8 @@ const chatModel = mongoose.Schema({
             type : mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
-    ]
-    latestMessege : {
+    ],
+    latestMessage : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "Message"
     },
@@ -21,5 +21,5 @@ const chatModel = mongoose.Schema({
     timeStamp: true,
 });
 
-const Chat = mongoose.Model("Chat",chatModel);
+const Chat = mongoose.model("Chat",chatModel);
 module.exports = Chat;

@@ -6,7 +6,7 @@ const generateToken = require("../Config/generateToken");
 
 const loginController = expressAsyncHandler( async (req,res) => {
     
-    console.log(req.body)
+    //console.log(req.body)
     const { name , password } = req.body;
     console.log(name,password);
     

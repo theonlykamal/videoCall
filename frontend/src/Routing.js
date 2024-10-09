@@ -1,20 +1,24 @@
 import React from 'react'
-import Chat from './chatapp/Chat'
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
+
 import NotesApp from './notesapp/notesApp' 
 import Login from './chatapp/Componenets/Login'
-import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
+
 import ChatArea from './chatapp/Componenets/ChatArea'
 import Users from './chatapp/Componenets/Users'
 import Groups from './chatapp/Componenets/Groups'
 import CreateGroups from './chatapp/Componenets/CreateGroups'
 import Welcome from './chatapp/Componenets/Welcome'
 import MainContainer from './chatapp/Componenets/MainContainer'
-import PApp from './chatapp/chatApp'
+
 import Everything from './Everything'
 import Empty  from "./Empty";
+import { useDispatch } from "react-redux";
 
 
 const Main = () => {
+  const dispatch = useDispatch();
+ 
   return (
     
     <BrowserRouter>
@@ -25,7 +29,7 @@ const Main = () => {
                 <Route exact path = 'profile' element = {<Empty />} />
                 <Route exact path = 'app' element = {<MainContainer />}>
                     <Route path = 'welcome' element = {<Welcome />} />
-                    <Route path = 'chat' element = {<ChatArea />} />
+                    <Route path = 'chat/:_id' element = {<ChatArea />} />
                     <Route path = 'users' element = {<Users />} />
                     <Route path = 'groups' element = {<Groups />} />
                     <Route path = 'create-groups' element = {<CreateGroups />} />

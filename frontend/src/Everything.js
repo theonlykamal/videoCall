@@ -1,5 +1,5 @@
 import React from 'react'
-import Chat from './chatapp/Chat'
+
 import NotesApp from './notesapp/notesApp' 
 import Login from './chatapp/Componenets/Login'
 import {BrowserRouter, Routes, Route, NavLink,Outlet} from 'react-router-dom'
@@ -9,7 +9,7 @@ import Groups from './chatapp/Componenets/Groups'
 import CreateGroups from './chatapp/Componenets/CreateGroups'
 import Welcome from './chatapp/Componenets/Welcome'
 import MainContainer from './chatapp/Componenets/MainContainer'
-import PApp from './chatapp/chatApp'
+
 
 
 

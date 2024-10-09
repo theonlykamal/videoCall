@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 
 function Login() {
+
+  const server = "http://localhost:5000";
+
   const [showlogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({ name: "", email: "", password: "" });
@@ -35,7 +38,7 @@ function Login() {
       console.log(data);
       //response
       const response = await axios.post(
-        "http://localhost:5000/user/login/",
+        `${server}/user/login/`,
         data,
         config
       );
@@ -72,7 +75,7 @@ function Login() {
       console.log(data);
       //response
       const response = await axios.post(
-        "http://localhost:5000/user/register/",
+        `${server}/user/register/`,
         data,
         config
       );

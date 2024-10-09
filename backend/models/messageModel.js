@@ -9,6 +9,10 @@ const messageModel = mongoose.Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    content: {
+        type: String,
+        trim: true,
+    },
     chat : {
         type : mongoose.Schema.Types.ObjectId,
         ref: "Chat"
@@ -17,5 +21,5 @@ const messageModel = mongoose.Schema({
     timeStamp: true,
 });
 
-cosnt Message = mongoose.Model("Message",messageModal);
+const Message = mongoose.model("Message",messageModel);
 module.exports = Message;
