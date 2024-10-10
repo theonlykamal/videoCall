@@ -11,12 +11,12 @@ var date = new Date();
 const app = express();
 
 
-const corsOptions ={
-    origin: 'https://my-stop.vercel.app/', 
-    credentials: true,            //access-control-allow-credentials:true
-    optionSuccessStatus: 200
-}
-app.use(cors(corsOptions));
+// const corsOptions ={
+//     origin: 'https://my-stop.vercel.app/', 
+//     credentials: true,            //access-control-allow-credentials:true
+//     optionSuccessStatus: 200
+// }
+// app.use(cors(corsOptions));
 
 
 dotenv.config();
