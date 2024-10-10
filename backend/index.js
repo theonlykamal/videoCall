@@ -43,7 +43,7 @@ connectDb();
 
 
 const allowCors = require("./middleware/allowCors");
-app.use("/(.*)",allowCors);
+app.use(allowCors);
 
 app.get("/",(req,res) => {
     res.send("API is running12233");
