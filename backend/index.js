@@ -12,7 +12,7 @@ const app = express();
 
 
 const corsOptions ={
-    origin: 'https://my-stop.vercel.app/', 
+    origin: '*', 
     credentials: true,            //access-control-allow-credentials:true
     optionSuccessStatus: 200
 }
