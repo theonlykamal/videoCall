@@ -11,12 +11,12 @@ var date = new Date();
 const app = express();
 
 
-// const corsOptions ={
-//     origin: 'https://my-stop.vercel.app/', 
-//     credentials: true,            //access-control-allow-credentials:true
-//     optionSuccessStatus: 200
-// }
-// app.use(cors(corsOptions));
+const corsOptions ={
+    origin: 'https://my-stop.vercel.app/', 
+    credentials: true,            //access-control-allow-credentials:true
+    optionSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 
 dotenv.config();
@@ -42,15 +42,15 @@ const connectDb = async () => {
 connectDb();
 
 
-const allowCors = require("./middleware/allowCors");
-app.use("/(.*)",allowCors);
+// const allowCors = require("./middleware/allowCors");
+// app.use("/(.*)",allowCors);
 
 app.get("/",(req,res) => {
     res.send("API is running12233");
 });
-app.use("/user",allowCors,userRoutes);
-app.use("/chat",allowCors,chatRoutes);
-app.use("/message",allowCors,messageRoutes);
+app.use("/user",userRoutes);
+app.use("/chat",chatRoutes);
+app.use("/message",messageRoutes);
 
 
 
