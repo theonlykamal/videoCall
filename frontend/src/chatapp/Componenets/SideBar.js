@@ -18,7 +18,7 @@ import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from "./MainContainer";
 
 export default function SideBar() {
-  const server = "https://my-stop-api.vercel.app";
+  const server = "https://mystop-1.onrender.com";
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const lightTheme = useSelector((state) => state.themeKey);

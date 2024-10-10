@@ -12,7 +12,7 @@ function Users() {
   
     const { refresh, setRefresh } = useContext(myContext);
 
-    const server = "https://my-stop-api.vercel.app";
+    const server = "https://mystop-1.onrender.com";
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState([]);
 

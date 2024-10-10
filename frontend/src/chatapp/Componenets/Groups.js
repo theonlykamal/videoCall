@@ -13,7 +13,7 @@ import { myContext } from "./MainContainer";
 
 function Groups() {
 
-    const server = "https://my-stop-api.vercel.app";
+    const server = "https://mystop-1.onrender.com";
   const { refresh, setRefresh } = useContext(myContext);
 
   const lightTheme = useSelector((state) => state.themeKey);

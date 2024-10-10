@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateGroups() {
 
-  const server = "https://my-stop-api.vercel.app";
+  const server = "https://mystop-1.onrender.com";
   const lightTheme = useSelector((state) => state.themeKey);
   const userData = JSON.parse(localStorage.getItem("userData"));
   // console.log("Data from LocalStorage : ", userData);

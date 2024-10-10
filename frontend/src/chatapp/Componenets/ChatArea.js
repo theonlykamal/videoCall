@@ -57,7 +57,7 @@ function fChatArea() {
 
 
 function ChatArea() {
-    const server = "https://my-stop-api.vercel.app"
+    const server = "https://mystop-1.onrender.com"
   const lightTheme = useSelector((state) => state.themeKey);
   const [messageContent, setMessageContent] = useState("");
   const messagesEndRef = useRef(null);
