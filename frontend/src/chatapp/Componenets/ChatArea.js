@@ -57,7 +57,7 @@ function fChatArea() {
 
 
 function ChatArea() {
-    const server = "https://mystop-1.onrender.com"
+  const server = "http://localhost:5000";
   const lightTheme = useSelector((state) => state.themeKey);
   const [messageContent, setMessageContent] = useState("");
   const messagesEndRef = useRef(null);
