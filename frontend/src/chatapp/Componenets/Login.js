@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const server = "https://mystop-1.onrender.com";
+  const server = "http://localhost:5000";
 
   const [showlogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(false);

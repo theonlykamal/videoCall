@@ -23,8 +23,9 @@ const Everything = () => {
         
             
             <NavLink className = "link" exact to ='profile'>🪴</NavLink>
-            <NavLink className = "link" exact to = 'app'>chat</NavLink>
-            <NavLink className = "link" exact to ='notes'>notes</NavLink>
+            <NavLink className = "link" exact to = 'app'>💬🗨️</NavLink>
+            <NavLink className = "link" exact to ='notes'>📝</NavLink>
+            <NavLink className = "link" exact to ='calender'>🗓️</NavLink>
             
           
     </div>

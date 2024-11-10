@@ -10,6 +10,7 @@ import Groups from './chatapp/Componenets/Groups'
 import CreateGroups from './chatapp/Componenets/CreateGroups'
 import Welcome from './chatapp/Componenets/Welcome'
 import MainContainer from './chatapp/Componenets/MainContainer'
+import CalanderApp from './calender_app/CalanderApp'
 
 import Everything from './Everything'
 import Empty  from "./Empty";
@@ -34,6 +35,7 @@ const Main = () => {
                     <Route path = 'groups' element = {<Groups />} />
                     <Route path = 'create-groups' element = {<CreateGroups />} />
                 </Route>
+                <Route exact path = 'calender' element = {<CalanderApp />} />
             </Route>
     </Routes>
 
