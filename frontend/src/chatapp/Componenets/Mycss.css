@@ -1,8 +1,8 @@
 .main-container {
     
     background-color: rgb(183, 248, 247);
-    height: 93vh;
-    width: 99vw;
+    height: 92vh;
+    width: 100vw;
     display: flex;
     border-radius: 30px;
     margin-top: 10px;
@@ -31,6 +31,7 @@
 .sb-conversationItems {
     overflow: scroll;
     scrollbar-width: none;
+    border-radius: 20px;
 
 }
 .search {
@@ -99,18 +100,19 @@
     border-radius: 50%;
     justify-self: center;
     align-self: center;
-    margin-left: 10px;
-    margin-right: 5px;
+    margin: 0;
 }
 .con-title {
     grid-area: 1/2/2/4;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     color: black;
+    margin: 5px;
 }
 .con-lastMessage {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1rem;
+    margin: 2px;
 }
 .con-timeStamp {
     justify-self:  flex-end;
@@ -249,6 +251,7 @@
     font-style: italic;
     color: crimson;
     border: 1px;
+    cursor: pointer;
 }
 
 .list-container {

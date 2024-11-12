@@ -12,7 +12,7 @@ function Users() {
   
     const { refresh, setRefresh } = useContext(myContext);
 
-    const server = "https://mystop-1.onrender.com";
+    const server = "http://localhost:5000";
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState([]);
 
