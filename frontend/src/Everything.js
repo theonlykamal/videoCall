@@ -16,19 +16,21 @@ import MainContainer from './chatapp/Componenets/MainContainer'
 const Everything = () => {
   return (
     
-    <div>
-      
-    <div className = 'nav-bar'>
-       
-        
-            
-            <NavLink className = "link" exact to ='profile'>🪴</NavLink>
-            <NavLink className = "link" exact to = 'app'>💬🗨️</NavLink>
-            <NavLink className = "link" exact to ='notes'>📝</NavLink>
-            <NavLink className = "link" exact to ='calender'>🗓️</NavLink>
-            
+    <div >
+
+     <div className='et'> 
+        <div className = 'nav-bar'>
           
-    </div>
+            
+                
+                <NavLink className = "link" exact to ='profile'>🪴</NavLink>
+                <NavLink className = "link" exact to ='video'>📞</NavLink>
+                <NavLink className = "link" exact to = 'app'>🗨️</NavLink>
+                <NavLink className = "link" exact to ='notes'>📝</NavLink>
+                <NavLink className = "link" exact to ='calender'>🗓️</NavLink>
+        </div>              
+              
+      </div>
 
     {/* {<div className = "open-msg-pad">
     <p className = "open-msg">Open an app</p>
