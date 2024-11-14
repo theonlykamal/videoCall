@@ -1,13 +1,13 @@
 import React , {useState} from 'react';
 import Paper from '@mui/material/Paper';
 import Calender from '../components/calender';
-import { events } from '../assets/fakeEvents';
+
 import { parseISO } from 'date-fns';
 
-const CalenderPage = () => {
+const CalenderPage = ({daySelect,onSelect,todayDate,onToday,events}) => {
   console.log(parseISO(events[0].startDatetime));
   
-  const [allEvents, setAllEvents] = useState(events);
+
   
   
   return (
@@ -22,7 +22,11 @@ const CalenderPage = () => {
       
       className='calender-page-paper'
     >
-      <Calender events = {allEvents}/>  
+      <Calender daySelect = {daySelect} 
+                      todayDate = {todayDate}  
+                      onSelect ={(day) => {onSelect(day)}}
+                      onToday = {(date) => {onToday(date)}}
+                      events = {events}/>  
       
     </Paper>
    

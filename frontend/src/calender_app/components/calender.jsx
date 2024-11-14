@@ -4,18 +4,24 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { IconButton } from '@mui/material';
 import DayEvents from './DayEvents';
+import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
+import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+
 
 
 const WEEKDAYS = ["Sun", "Mon", "Tue","Wed","Thu","Fri", "Sat" ];
 
 
-const Calender = ({events}) => {
-    let today = new Date();
+const Calender = ({daySelect,onSelect,todayDate,onToday,events}) => {
 
-    let [todayDate,setTodayDate] = useState(today);
-    let [selectedDay,setSelectedDay] = useState(today);
 
-    let currentDate = todayDate;
+
+    
+    const [monthday, setMonthDay] = useState(todayDate)
+    
+    
+
+    let currentDate = monthday;
 
     let firstDayOfMonth = startOfMonth(currentDate);
     let lastDayOfMonth = endOfMonth(currentDate);
@@ -56,21 +62,60 @@ const Calender = ({events}) => {
 
     <div className='cal-page-paper'>
         <div className='calender-container'>
-            <div className='calender-header'>
-                <div></div>
-                <h2 style={{
-                    marginTop: 0
+            <div className='calender-header' style={{
+                    marginTop: 0,
+                    marginBlockEnd: "20px"
+                    
+                }}>
+                <div>
+                <h2  style={{
+                    margin: 0
                 }}>
                     {format(currentDate,"MMMM yyyy")}
                 </h2>
-                <div>
-                    <IconButton onClick={() => {setTodayDate(subMonths(todayDate,1))}} >
-                        <ArrowLeftIcon /> 
-                    </IconButton> 
+                </div>
+                
 
-                    <IconButton onClick={() => {setTodayDate(addMonths(todayDate,1))}}>
-                        <ArrowRightIcon /> 
-                    </IconButton> 
+                <div className="header-icons">
+                    <div>
+                        <IconButton sx={{ backgroundColor: "#F9F9F9", color: "#EF4444",width: "40px",height:"40px",
+                            '&:hover': {
+                                color: '#F9F9F9',
+                                backgroundColor: '#EF4444',
+                            },}}
+                            onClick={() => {
+                                setMonthDay(todayDate);
+                                onSelect(todayDate);
+                            }}>
+                            <TodayTwoToneIcon color='#F9F8F8' sx={{
+                    
+                                borderRadius:"9999px",
+                            }}/>
+                        </IconButton>
+                    </div>
+                    <div className='item'>
+                    <IconButton sx={{ backgroundColor: "#F9F9F9", color: "#EF4444",width: "40px",height:"40px",
+                            '&:hover': {
+                                color: '#F9F9F9',
+                                backgroundColor: '#EF4444',
+                            },}}
+                            onClick={() => {
+                    
+                            }}>
+                            <AddCircleOutlineTwoToneIcon color='#F9F8F8' sx={{
+                    
+                                borderRadius:"9999px",
+                            }}/>
+                        </IconButton>
+                    </div>
+                    <div>
+                        <IconButton onClick={() => {setMonthDay(subMonths(monthday,1))}} >
+                            <ArrowLeftIcon />
+                        </IconButton>
+                        <IconButton onClick={() => {setMonthDay(addMonths(monthday,1))}} >
+                            <ArrowRightIcon />
+                        </IconButton>
+                    </div>
                 </div>
             </div>
             <div className='calender-grid'>
@@ -84,12 +129,13 @@ const Calender = ({events}) => {
                             <div 
                                 key = {day} 
                                 className={"month-days" + 
-                                    (isSameMonth(day,todayDate) ? "" : " surround") +
-                                    (isSameDay(day,selectedDay) ? " selected" : "") +
+                                    (isSameMonth(day,monthday) ? "" : " surround") +
+                                    (isSameDay(day,daySelect) ? " selected" : "") +
                                     (isToday(day) ? " today" : "") +
-                                    ((isToday(day) && isSameDay(day,selectedDay)) ? " sel-today" : "")
+                                    ((isToday(day) && isSameDay(day,daySelect)) ? " sel-today" : "")
                                 }
-                                onClick={() => {setSelectedDay(day)}}
+                                
+                                onClick={() => {onSelect(day)}}
 
                             >
                                 {format(day,"d")}
@@ -114,7 +160,7 @@ const Calender = ({events}) => {
 
         <div className='day-events-container'>
 
-                <DayEvents day ={selectedDay} events={events} />
+                <DayEvents day ={daySelect} events={events} />
 
             </div>
     </div>
