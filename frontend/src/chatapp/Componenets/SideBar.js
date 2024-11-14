@@ -18,7 +18,7 @@ import { refreshSidebarFun } from "../Features/refreshSidebar";
 import { myContext } from "./MainContainer";
 
 export default function SideBar() {
-  const server = "http://localhost:5000";
+  const server = process.env.BACKEND;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const lightTheme = useSelector((state) => state.themeKey);

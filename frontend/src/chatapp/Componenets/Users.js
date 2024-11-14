@@ -12,7 +12,7 @@ function Users() {
   
     const { refresh, setRefresh } = useContext(myContext);
 
-    const server = "http://localhost:5000";
+    const server = process.env.BACKEND;
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState([]);
 

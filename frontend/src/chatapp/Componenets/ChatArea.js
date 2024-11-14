@@ -57,7 +57,7 @@ function fChatArea() {
 
 
 function ChatArea() {
-  const server = "http://localhost:5000";
+  const server = process.env.BACKEND;
   const lightTheme = useSelector((state) => state.themeKey);
   const [messageContent, setMessageContent] = useState("");
   const messagesEndRef = useRef(null);
