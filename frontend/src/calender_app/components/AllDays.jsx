@@ -1,6 +1,6 @@
 import React from 'react'
 import Paper from '@mui/material/Paper';
-import { eachDayOfInterval, endOfYear, format, startOfToday, startOfYear } from 'date-fns';
+import { eachDayOfInterval, endOfYear, format, isAfter, isBefore, startOfToday, startOfYear } from 'date-fns';
 
 const AllDays = () => {
 
@@ -22,7 +22,11 @@ const AllDays = () => {
             sx = {{
             flex: 1,
             display: "flex",
-            flexDirection: "column"
+            flexDirection: "column",
+            overflowY: "scroll",
+            scrollbarWidth: "none",
+            
+            
             }}
         >
             paper
@@ -35,8 +39,12 @@ const AllDays = () => {
 
                     {allDays.map((day) => {
                         return(
-                            <div className='day'>
-                                {format(day,"dd MMM")}
+                            <div key = {day} 
+                            className={"day " + 
+                                (format(day,"EEE ")) +
+                                (isAfter(day,new Date()) ? "after-today " : "upto-today ")
+                            }>
+                                {format(day,"dd MMM - EEE")}
                             </div>
                         )
                     })}

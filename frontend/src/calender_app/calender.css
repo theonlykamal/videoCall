@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
 
-    height: 96vh;
 }
 
 
@@ -56,7 +55,7 @@
 
 .events-page {
     
-    
+    height: 90.5vh;
 
     background-color: #2f4550;
     
@@ -244,8 +243,11 @@
 
 @media (max-width: 1100px) {
     .events-page{
-        flex-direction: column;
+        /* flex-direction: column;
+        height: ; */
+
     }
+
 
 
 }
@@ -255,10 +257,11 @@
 
 .all-days {
 
-    flex: 1;
+    /* flex: 1; */
     padding: 20px;
     display: flex;
     flex-direction: column;
+    max-width: 582px;
     
 
     border:solid;
@@ -278,14 +281,14 @@
 
 @media (min-width: 1300px) {
     .all-events{
-        flex: 2;
+        flex: 1;
     }
 }
 
 .on-days-paper {
 
     flex: 1;
-
+    
     display: flex;
     flex-direction: column;
     
@@ -308,7 +311,7 @@
 .all-days-list {
 
     flex: 1;
-    overflow: scroll;
+
     
 
     display: flex;
@@ -318,12 +321,38 @@
     border-color: #ff43ef;
 }
 
-.all-days-list .day{
+.day{
+
+    margin-block: 2px;
+    font-size: xx-large;
+    border-radius: 5px;
+    padding-inline: 5px;
     
-    border:solid;
+    /* border:solid; */
     border-color: #78ff43;
 
 }
+
+
+
+.upto-today {
+    background-color: #292929;
+    color: #EBEBEB;
+    margin: 1px;
+
+
+
+}
+
+.after-today {
+
+}
+
+.Sun {
+    background-color: red;
+}
+
+
 
 
 
