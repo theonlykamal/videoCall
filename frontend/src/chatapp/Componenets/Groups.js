@@ -13,7 +13,7 @@ import { myContext } from "./MainContainer";
 
 function Groups() {
 
-    const server = "http://localhost:5000";
+    const server = process.env.BACKEND;
   const { refresh, setRefresh } = useContext(myContext);
 
   const lightTheme = useSelector((state) => state.themeKey);

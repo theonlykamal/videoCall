@@ -1,8 +1,9 @@
 import React from 'react'
 import Paper from '@mui/material/Paper';
-import { eachDayOfInterval, endOfYear, format, isAfter, isBefore, startOfToday, startOfYear } from 'date-fns';
+import { eachDayOfInterval, endOfYear, format, isAfter, isBefore, isSameDay, parseISO, startOfToday, startOfYear } from 'date-fns';
 
-const AllDays = () => {
+
+const AllDays = ({events}) => {
 
     let date = startOfToday();
     let yearStart = startOfYear(date);
@@ -12,6 +13,9 @@ const AllDays = () => {
         start: yearStart,
         end: yearEnd
     });
+
+
+    
 
   return (
     <div className='all-days'>
@@ -39,13 +43,30 @@ const AllDays = () => {
 
                     {allDays.map((day) => {
                         return(
-                            <div key = {day} 
-                            className={"day " + 
-                                (format(day,"EEE ")) +
-                                (isAfter(day,new Date()) ? "after-today " : "upto-today ")
-                            }>
-                                {format(day,"dd MMM - EEE")}
-                            </div>
+                            
+                                <div key = {day} 
+                                    className="day">
+                                    day
+
+                                    <div className={"date " +
+                                        (format(day,"EEE ")) +
+                                        (isAfter(day,new Date()) ? "after-today " : "upto-today ")
+                                    }>
+
+                                        {format(day,"dd MMM - EEE")}
+                                    </div>
+                                    
+                                    <div className="event-link">
+                                        events-link
+
+                                        {events.filter((event) => 
+                                            isSameDay(parseISO(event.startDatetime),day)).map((dayEvent) => {
+
+                                            })}
+
+                                    </div>
+
+                                </div>
                         )
                     })}
 
