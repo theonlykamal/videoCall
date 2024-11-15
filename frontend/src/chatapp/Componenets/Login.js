@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
 
-  const server = process.env.BACKEND;
+  const server = process.env.REACT_APP_BACKEND;
 
   const [showlogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -25,8 +25,12 @@ function Login() {
     setData({ ...data, [e.target.name]: e.target.value });
   }
 
+
+  
+
   const loginHandler = async () =>  {
     setLoading(true);
+    console.log("hi" + (process.env.REACT_APP_BACKEND));
     try {
       
       //config 

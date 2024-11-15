@@ -26,6 +26,7 @@ app.use(express.json());
 const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
 const messageRoutes = require("./Routes/messageRoutes");
+const eventRoutes = require("./Routes/eventRoutes")
 
 
 mongoose.connect(process.env.MONGO_URI);
@@ -51,6 +52,7 @@ app.get("/",(req,res) => {
 app.use("/user",userRoutes);
 app.use("/chat",chatRoutes);
 app.use("/message",messageRoutes);
+app.use("/event",eventRoutes);
 
 
 

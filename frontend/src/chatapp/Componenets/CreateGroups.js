@@ -16,7 +16,7 @@ import { useNavigate } from "react-router-dom";
 
 function CreateGroups() {
 
-  const server = process.env.BACKEND;
+  const server = process.env.REACT_APP_BACKEND;
   const lightTheme = useSelector((state) => state.themeKey);
   const userData = JSON.parse(localStorage.getItem("userData"));
   // console.log("Data from LocalStorage : ", userData);

@@ -57,7 +57,9 @@ function fChatArea() {
 
 
 function ChatArea() {
-  const server = process.env.BACKEND;
+  const server = process.env.REACT_APP_BACKEND;
+  
+  
   const lightTheme = useSelector((state) => state.themeKey);
   const [messageContent, setMessageContent] = useState("");
   const messagesEndRef = useRef(null);

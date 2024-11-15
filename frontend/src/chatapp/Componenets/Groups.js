@@ -13,7 +13,7 @@ import { myContext } from "./MainContainer";
 
 function Groups() {
 
-    const server = process.env.BACKEND;
+    const server = process.env.REACT_APP_BACKEND;
   const { refresh, setRefresh } = useContext(myContext);
 
   const lightTheme = useSelector((state) => state.themeKey);

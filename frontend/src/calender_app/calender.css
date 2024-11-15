@@ -9,7 +9,8 @@
     color: aliceblue;
 
     height: 90.5vh;
-    width: 99.2vw;
+    width: 90.2vw;
+    max-width: 1732px;
     margin-top: 10px;
     font-family: "Inter";
     display: grid;
@@ -38,11 +39,12 @@
     flex-direction: column;
     background-color: #B8DBD9;
     color: #292929;
+    
 
 
     /* border:solid; */
-    border-width: 5px;
-    border-color: #4d43ff;
+    /* border-width: 5px;
+    border-color: #4d43ff; */
 
   
 }
@@ -73,11 +75,18 @@
     border-color: #ff4343;
 }
 
+
 .calender-header {
     text-align: center;
     display: flex;
     justify-content: space-between;
+    align-items:start;
 }
+
+.header-icons{
+    display: flex;
+}
+
 .calender-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
@@ -113,7 +122,7 @@
 .sel-today {
     text-align: center !important;
     color: #F9F8F8;
-    background-color: rgb(239 68 68)!important;
+    background-color: rgb(239, 68, 68)!important;
     font-weight: 700;
 }
 
@@ -182,9 +191,23 @@
 }
 
 .day-events .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 20px;
 }
 
+#outlined-password-input {
+    height: 4px;
+}
+
+#add-button {
+    padding: 0px;
+}
+
+#composition-menu{
+    padding: 0px;
+}
 
 .day-events .list{
 
@@ -237,20 +260,11 @@
     display: flex;
     flex: none;
 
-    border:solid;
-    border-color: #ff4343;
+    /* border:solid;
+    border-color: #ff4343; */
 }
 
-@media (max-width: 1100px) {
-    .events-page{
-        flex-direction: column;
-        
 
-    }
-
-
-
-}
 
 
 
@@ -263,10 +277,11 @@
     flex-direction: column;
     max-width: 582px;
     overflow: hidden;
+    flex: 1;
     
 
-    border:solid;
-    border-color: #e3ff43;
+    /* border:solid;
+    border-color: #e3ff43; */
 }
 
 .all-events {
@@ -275,9 +290,10 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
+    overflow-y: hidden;
 
-    border:solid;
-    border-color: #6643ff;
+    /* border:solid;
+    border-color: #6643ff; */
 }
 
 @media (min-width: 1300px) {
@@ -293,9 +309,10 @@
     display: flex;
     flex-direction: column;
     
+    
 
-    border:solid;
-    border-color: #43ff43;
+    /* border:solid;
+    border-color: #43ff43; */
 }
 
 .on-events-paper {
@@ -305,8 +322,8 @@
     display: flex;
     flex-direction: column;
 
-    border:solid;
-    border-color: #ff43ef;
+    /* border:solid;
+    border-color: #ff43ef; */
 }
 
 .all-days-list {
@@ -318,30 +335,29 @@
     display: flex;
     flex-direction: column;
 
-    border:solid;
-    border-color: #ff43ef;
+    /* border:solid;
+    border-color: #ff43ef; */
 }
 
 .day{
 
     background-color: #292929;
-    color: #EBEBEB;
-    margin: 1px;
+    color: #F9F8F8;
+    margin: 0px;
+    display: flex;
+    animation-duration: 1s;
 
-    border:solid;
-    border-color: #ff4343;
 
-}
+    transition-duration: 1100ms;
+    transition-property: border-width;
 
-.date{
 
-    margin-block: 2px;
-    font-size: xx-large;
-    border-radius: 5px;
-    padding-inline: 5px;
-    
-    border:solid;
-    border-color: #78ff43;
+    border: solid;
+    border-radius: 10px;
+    border-color: #F9F8F8;
+
+    /* border:solid;
+    border-color: #ff4343; */
 
 }
 
@@ -355,20 +371,184 @@
 }
 
 .after-today {
+    background-color: #2929292c;
+    color: #292929;
+    margin-inline: 5px;
+   
+    margin-block: 2px;
+    border: solid;
+    
+    border-radius: 10px;
+    border-color: #2929292c;
 
 }
+
+.date{
+
+    margin-block: 2px;
+    font-size: xx-large;
+    border-radius: 5px;
+    padding-inline: 5px;
+    flex: none;
+    text-wrap: wrap;
+    align-content: center;
+    
+    transition-duration: 0.1s;
+    transition-property: font-size;
+    
+    
+    /* border:solid;
+    border-color: #78ff43; */
+
+}
+
+
 
 .Sun {
-    background-color: red;
+    background-color: #dbb8b8;
+    color: #292929;
 }
 
-.event-link{
+.event-link-list{
 
-    border:solid;
-    border-color: #78ff43;
+    display: flex;
+    
+    flex: 1;
+    
+    
+
+    /* border:solid;
+    border-color: #78ff43; */
+
 
 
 }
+
+.event-link {
+    background-color:#FF0099  ;
+    color: #292929;
+    border-radius: 20px;
+    margin: 5px;
+    margin-inline: 2px;
+    padding: 5px;
+    text-align: center;
+    width: 5em;
+    overflow: hidden;
+
+    
+}
+
+.day:hover{
+    /* margin-block: 20px; */
+
+        .date{
+            font-size: xxx-large;
+            /* color: #2bca6d; */
+        
+        }
+
+
+}
+
+@media (max-width: 1100px) {
+    .events-page{
+        /* flex-direction: column; */
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        
+
+    }
+    .date{
+        text-wrap: wrap;
+    }
+    .event-link-list {
+        flex-direction: column;
+    }
+
+}
+
+
+.event-grid {
+    display: grid;
+    grid-template-columns: 1fr 4.5fr 3fr;
+}
+
+.event-grid .item {
+
+    border-block-end: solid;
+    border-width: 1px;
+
+    display: flex;
+    align-items: center;
+}
+
+.all-events-header {
+    display: grid;
+    grid-template-columns: 1fr 4.5fr 3fr;
+
+}
+
+
+
+.event-grid .item.done {
+    margin-inline-start: 0.5rem;
+}
+
+.event-grid .item.name{
+    border-inline-start: solid;
+    border-width: 1px;
+    padding-inline: 10px;
+}
+
+.event-grid .item.datetime {
+    margin-inline-end: 0.5rem;
+    padding-inline-start: 10px;
+}
+
+.all-events-header .item {
+    padding: 10px;
+    padding-top: 0px;
+    
+}
+
+.all-day-select .date{
+
+    font-size: xxx-large;
+}
+
+
+.hvr-bubble-bottom {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+  }
+  .hvr-bubble-bottom:before {
+    pointer-events: none;
+    position: absolute;
+    z-index: -1;
+    content: '';
+    border-style: solid;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    left: calc(50% - 10px);
+    bottom: 0;
+    border-width: 10px 10px 0 10px;
+    border-color: #e1e1e1 transparent transparent transparent;
+  }
+  .hvr-bubble-bottom:hover:before, .hvr-bubble-bottom:focus:before, .hvr-bubble-bottom:active:before  {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+  }
+
+  .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root  {
+    padding: 0px;
+  }
+
 
 
 
