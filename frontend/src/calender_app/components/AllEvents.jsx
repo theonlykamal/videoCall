@@ -1,8 +1,10 @@
 import React from 'react'
 
+
 import Paper from '@mui/material/Paper';
-import { Checkbox, checkboxClasses } from '@mui/material';
+import { Checkbox , Avatar ,Chip } from '@mui/material';
 import { format } from 'date-fns';
+
 
 
 const AllEvents = ({onDone, events}) => {
@@ -83,12 +85,19 @@ const AllEvents = ({onDone, events}) => {
                         (Object.keys(eventProp)[1])}
                       
                     >
-                      {Object.keys(eventProp)[1] == "done" ? (<Checkbox 
-                        checked = {Object.values(eventProp)[1]} 
-                        onChange={checkboxHandler}
-                        name = {Object.values(eventProp)[0]}
-                      />) 
-                      : (Object.keys(eventProp)[1] == "datetime" ? (format(Object.values(eventProp)[1],"MMM d - h:mm a")) : (Object.values(eventProp)[1]))}
+                      {Object.keys(eventProp)[1] == "done" 
+                        ? (<Checkbox 
+                            checked = {Object.values(eventProp)[1]} 
+                            onChange={checkboxHandler}
+                            name = {Object.values(eventProp)[0]}
+                          />) 
+                          : (Object.keys(eventProp)[1] == "datetime" 
+                            ? (<Chip
+                              
+                              label={format(Object.values(eventProp)[1],"MMM d - h:mm a") }
+                              variant="outlined"
+                            /> ) 
+                              : (Object.values(eventProp)[1]))}
                     </div>
                   )
                 })}

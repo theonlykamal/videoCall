@@ -14,30 +14,36 @@ const MainPage = () => {
   let [events,setEvents] = useState(allEvents);
   let nextId = events.length;
 
-  function addEvent( nameEve ) {
-    const endTime = addHours(selectedDay,1).toISOString()
-    const startTime = selectedDay.toISOString()
-    console.log(startTime);
-    
-      setEvents([
-        ...events,
-        { 
-          id: nextId++, 
-          name: nameEve ,
-          imageUrl: "",
-          startDatetime: startTime,
-          endDatetime: endTime,
-        }
-      ]);
+  function addEventHandler( nameEve ) {
+    if (nameEve.length > 0) {
+      const endTime = addHours(selectedDay,1).toISOString()
+      const startTime = selectedDay.toISOString()
+      console.log(startTime);
+      
+        setEvents([
+          ...events,
+          { 
+            id: nextId++, 
+            name: nameEve ,
+            imageUrl: "",
+            startDatetime: startTime,
+            endDatetime: endTime,
+          }
+        ]);
+      
+    }
+
     
   }
 
-  function doneEvent (id) {
+  function doneEventHandler (id) {
    const newEvents =  events.map((event) => {
-      if (event.id == id) {
-        return event.done = !event.done
+    var temp = Object.assign({},event)
+      if (temp.id == id) {
+        temp.done = !temp.done
+        return temp;
       } else {
-        return event.done
+        return temp
       }
     })
     setEvents(newEvents)
@@ -46,15 +52,17 @@ const MainPage = () => {
 
   return (
 	<div className='main-page'>
-        <CalenderPage daySelect = {selectedDay} 
-                      todayDate = {todayDate}  
-                      onSelect ={setSelectedDay}
-                      onToday = {setTodayDate}
-                      events = {events} 
-                      onAdd = {addEvent}
+        <CalenderPage daySelect   =  {selectedDay} 
+                      todayDate   =  {todayDate}  
+                      onSelect    =  {setSelectedDay}
+                      onToday     =  {setTodayDate}
+                      events      =  {events} 
+                      onAdd       =  {addEventHandler}
                       
                       />
-        <EventsPage onDone = {doneEvent} daySelect = {selectedDay} events = {events} />
+        <EventsPage onDone = {doneEventHandler} 
+                    daySelect = {selectedDay} 
+                    events = {events} />
         
 	</div>
   )
