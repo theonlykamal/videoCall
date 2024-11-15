@@ -1,11 +1,11 @@
 import React from 'react'
 
 import Paper from '@mui/material/Paper';
-import { Checkbox } from '@mui/material';
+import { Checkbox, checkboxClasses } from '@mui/material';
 import { format } from 'date-fns';
 
 
-const AllEvents = ({events}) => {
+const AllEvents = ({onDone, events}) => {
 
   let unsortedEvents = events;
   let sortedEvents = unsortedEvents.toSorted((a,b) => {
@@ -24,14 +24,16 @@ const AllEvents = ({events}) => {
     
     let currEvent = sortedEvents[i];
     
-    eventProps.push({done: currEvent.done});
-    eventProps.push({name: currEvent.name});
-    eventProps.push({datetime: currEvent.startDatetime});
-    
-    
-    
+    eventProps.push({id: currEvent.id, done: currEvent.done});
+    eventProps.push({id: currEvent.id, name: currEvent.name});
+    eventProps.push({id: currEvent.id, datetime: currEvent.startDatetime});
+  
+  }
 
-    
+  function checkboxHandler(e) {
+    const _id = e.target.name
+    onDone(_id)
+
   }
 
 
@@ -68,18 +70,25 @@ const AllEvents = ({events}) => {
             <div className='on-events-paper'>
               {/* OnPaper */}
 
+
               
 
               <div className="event-grid">
                 
                 {eventProps.map((eventProp, index) => {
                   return(
-                    <div key={index}
+                    <div 
+                      name={Object.values(eventProp)[0]}
                       className={"item " +
-                        (Object.keys(eventProp))}
+                        (Object.keys(eventProp)[1])}
+                      
                     >
-                      {Object.keys(eventProp) == "done" ? (<Checkbox checked = {Object.values(eventProp)[0]}/>) 
-                      : (Object.keys(eventProp) == "datetime" ? (format(Object.values(eventProp),"MMM d - h:mm a")) : (Object.values(eventProp)))}
+                      {Object.keys(eventProp)[1] == "done" ? (<Checkbox 
+                        checked = {Object.values(eventProp)[1]} 
+                        onChange={checkboxHandler}
+                        name = {Object.values(eventProp)[0]}
+                      />) 
+                      : (Object.keys(eventProp)[1] == "datetime" ? (format(Object.values(eventProp)[1],"MMM d - h:mm a")) : (Object.values(eventProp)[1]))}
                     </div>
                   )
                 })}

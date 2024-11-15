@@ -3,7 +3,7 @@ import AllDays from '../components/AllDays';
 import AllEvents from '../components/AllEvents';
 
 
-const EventsPage = ({daySelect, events}) => {
+const EventsPage = ({onDone,daySelect, events}) => {
 
 
 
@@ -11,7 +11,7 @@ const EventsPage = ({daySelect, events}) => {
 	<div className='events-page'>
 
 		<AllDays daySelect = {daySelect} events = {events} />
-		<AllEvents daySelect = {daySelect} events = {events} />
+		<AllEvents onDone = {onDone} daySelect = {daySelect} events = {events} />
 
 	</div>
   )

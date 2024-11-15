@@ -32,6 +32,17 @@ const MainPage = () => {
     
   }
 
+  function doneEvent (id) {
+   const newEvents =  events.map((event) => {
+      if (event.id == id) {
+        return event.done = !event.done
+      } else {
+        return event.done
+      }
+    })
+    setEvents(newEvents)
+  }
+
 
   return (
 	<div className='main-page'>
@@ -41,8 +52,9 @@ const MainPage = () => {
                       onToday = {setTodayDate}
                       events = {events} 
                       onAdd = {addEvent}
+                      
                       />
-        <EventsPage daySelect = {selectedDay} events = {events} />
+        <EventsPage onDone = {doneEvent} daySelect = {selectedDay} events = {events} />
         
 	</div>
   )
