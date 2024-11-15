@@ -11,7 +11,7 @@ const EventsPage = ({daySelect, events}) => {
 	<div className='events-page'>
 
 		<AllDays daySelect = {daySelect} events = {events} />
-		<AllEvents  events = {events} />
+		<AllEvents daySelect = {daySelect} events = {events} />
 
 	</div>
   )

@@ -1,14 +1,15 @@
 import React from 'react'
 import { Paper } from '@mui/material'
 import { format, isSameDay, parseISO } from 'date-fns';
+import AddEvent from './AddEvent';
 
-const DayEvents = ({ day, events }) => {
+const DayEvents = ({ day, events  , onAdd}) => {
 
     let selectedDayMeetings = events.filter(event =>
         isSameDay(parseISO(event.startDatetime), day)
     );
 
-
+    // console.log(events)
 
   return (
 
@@ -18,6 +19,7 @@ const DayEvents = ({ day, events }) => {
             <div className='on-paper'>
                 <div className='header'>
                         <h3 style= {{margin: 0}}>{format(day,"MMMM d, yyyy")}</h3>
+                        <AddEvent onAdd = {onAdd} day = {day} events={events}/>
                 </div>
                 <div className='list'>
                     {selectedDayMeetings.map((selectedDayMeeting) => {

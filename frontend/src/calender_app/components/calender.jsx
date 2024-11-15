@@ -5,14 +5,14 @@ import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import { IconButton } from '@mui/material';
 import DayEvents from './DayEvents';
 import TodayTwoToneIcon from '@mui/icons-material/TodayTwoTone';
-import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+
 
 
 
 const WEEKDAYS = ["Sun", "Mon", "Tue","Wed","Thu","Fri", "Sat" ];
 
 
-const Calender = ({daySelect,onSelect,todayDate,onToday,events}) => {
+const Calender = ({daySelect,onSelect,todayDate,onToday,events,onAdd}) => {
 
 
 
@@ -55,12 +55,13 @@ const Calender = ({daySelect,onSelect,todayDate,onToday,events}) => {
 
     let calenderMonth = daysInPrevMonth.concat(daysInMonth,daysInNextMonth);
 
-    
+
 
 
   return (
 
     <div className='cal-page-paper'>
+        
         <div className='calender-container'>
             <div className='calender-header' style={{
                     marginTop: 0,
@@ -94,19 +95,9 @@ const Calender = ({daySelect,onSelect,todayDate,onToday,events}) => {
                         </IconButton>
                     </div>
                     <div className='item'>
-                    <IconButton sx={{ backgroundColor: "#F9F9F9", color: "#EF4444",width: "40px",height:"40px",
-                            '&:hover': {
-                                color: '#F9F9F9',
-                                backgroundColor: '#EF4444',
-                            },}}
-                            onClick={() => {
+
+                    {/* <AddEvent /> */}
                     
-                            }}>
-                            <AddCircleOutlineTwoToneIcon color='#F9F8F8' sx={{
-                    
-                                borderRadius:"9999px",
-                            }}/>
-                        </IconButton>
                     </div>
                     <div>
                         <IconButton onClick={() => {setMonthDay(subMonths(monthday,1))}} >
@@ -160,7 +151,10 @@ const Calender = ({daySelect,onSelect,todayDate,onToday,events}) => {
 
         <div className='day-events-container'>
 
-                <DayEvents day ={daySelect} events={events} />
+                <DayEvents day ={daySelect} 
+                    events={events} 
+                      onAdd = {onAdd} 
+                      />
 
             </div>
     </div>

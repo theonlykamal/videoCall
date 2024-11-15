@@ -20,7 +20,7 @@ const AllEvents = ({events}) => {
   let eventProps = [];
 
   for (let i = 0; i < sortedEvents.length; i++) {
-    console.log("i"+sortedEvents[i]);
+
     
     let currEvent = sortedEvents[i];
     
@@ -34,7 +34,7 @@ const AllEvents = ({events}) => {
     
   }
 
-  console.log(eventProps)
+
 
 
 
@@ -84,59 +84,7 @@ const AllEvents = ({events}) => {
                   )
                 })}
 
-{eventProps.map((eventProp, index) => {
-                  return(
-                    <div key={index}
-                      className={"item " +
-                        (Object.keys(eventProp))}
-                    >
-                      {Object.keys(eventProp) == "done" ? (<Checkbox checked = {Object.values(eventProp)[0]}/>) 
-                      : (Object.keys(eventProp) == "datetime" ? (format(Object.values(eventProp),"MMM d - h:mm a")) : (Object.values(eventProp)))}
-                    </div>
-                  )
-                })}
 
-
-{eventProps.map((eventProp, index) => {
-                  return(
-                    <div key={index}
-                      className={"item " +
-                        (Object.keys(eventProp))}
-                    >
-                      {Object.keys(eventProp) == "done" ? (<Checkbox checked = {Object.values(eventProp)[0]}/>) 
-                      : (Object.keys(eventProp) == "datetime" ? (format(Object.values(eventProp),"MMM d - h:mm a")) : (Object.values(eventProp)))}
-                    </div>
-                  )
-                })}
-
-
-
-
-{eventProps.map((eventProp, index) => {
-                  return(
-                    <div key={index}
-                      className={"item " +
-                        (Object.keys(eventProp))}
-                    >
-                      {Object.keys(eventProp) == "done" ? (<Checkbox checked = {Object.values(eventProp)[0]}/>) 
-                      : (Object.keys(eventProp) == "datetime" ? (format(Object.values(eventProp),"MMM d - h:mm a")) : (Object.values(eventProp)))}
-                    </div>
-                  )
-                })}
-
-
-
-{eventProps.map((eventProp, index) => {
-                  return(
-                    <div key={index}
-                      className={"item " +
-                        (Object.keys(eventProp))}
-                    >
-                      {Object.keys(eventProp) == "done" ? (<Checkbox checked = {Object.values(eventProp)[0]}/>) 
-                      : (Object.keys(eventProp) == "datetime" ? (format(Object.values(eventProp),"MMM d - h:mm a")) : (Object.values(eventProp)))}
-                    </div>
-                  )
-                })}
 
                   
                   

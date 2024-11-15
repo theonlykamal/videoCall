@@ -4,8 +4,8 @@ import Calender from '../components/calender';
 
 import { parseISO } from 'date-fns';
 
-const CalenderPage = ({daySelect,onSelect,todayDate,onToday,events}) => {
-  console.log(parseISO(events[0].startDatetime));
+const CalenderPage = ({daySelect,onSelect,todayDate,onToday,events,onAdd}) => {
+
   
 
   
@@ -24,9 +24,10 @@ const CalenderPage = ({daySelect,onSelect,todayDate,onToday,events}) => {
     >
       <Calender daySelect = {daySelect} 
                       todayDate = {todayDate}  
-                      onSelect ={(day) => {onSelect(day)}}
-                      onToday = {(date) => {onToday(date)}}
-                      events = {events}/>  
+                      onSelect ={onSelect}
+                      onToday = {onToday}
+                      events = {events}
+                      onAdd = {onAdd}/>  
       
     </Paper>
    

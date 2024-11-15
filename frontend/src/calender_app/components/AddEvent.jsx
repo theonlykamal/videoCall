@@ -7,22 +7,22 @@ import Popper from '@mui/material/Popper';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
+import AddCircleOutlineTwoToneIcon from '@mui/icons-material/AddCircleOutlineTwoTone';
+import { IconButton, TextField } from '@mui/material';
+import { useState } from 'react';
 
-export default function MenuListComposition() {
+export default function AddEvent({onAdd,events,day}) {
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
+ // console.log(events);
+  
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
 
-    setOpen(false);
-  };
+
 
   function handleListKeyDown(event) {
     if (event.key === 'Tab') {
@@ -32,6 +32,25 @@ export default function MenuListComposition() {
       setOpen(false);
     }
   }
+
+  const [data, setData] = useState("")
+
+  const changeHandler = (e) => {
+    console.log(data)
+    setData(e.target.value);
+  }
+
+  const handleClose = (event) => {
+    console.log(events)
+
+    onAdd(data);
+        console.log(events)
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
@@ -47,43 +66,91 @@ export default function MenuListComposition() {
     <Stack direction="row" spacing={2}>
       
       <div>
-        <Button
-          ref={anchorRef}
-          id="composition-button"
-          aria-controls={open ? 'composition-menu' : undefined}
-          aria-expanded={open ? 'true' : undefined}
-          aria-haspopup="true"
-          onClick={handleToggle}
-        >
-          Dashboard
-        </Button>
+        
+          <IconButton sx={{ backgroundColor: "#F9F9F9", color: "#EF4444",width: "40px",height:"40px",
+            '&:hover': {
+                color: '#F9F9F9',
+                backgroundColor: '#EF4444',
+            },}}
+            ref={anchorRef}
+            
+            id="composition-button"
+            aria-controls={open ? 'composition-menu' : undefined}
+            aria-expanded={open ? 'true' : undefined}
+            aria-haspopup="true"
+            onClick={handleToggle}
+            >
+            <AddCircleOutlineTwoToneIcon color='#F9F8F8' sx={{
+    
+                borderRadius:"9999px",
+            }}
+            
+            />
+                        </IconButton>
+        
+        
         <Popper
           open={open}
           anchorEl={anchorRef.current}
           role={undefined}
-          placement="bottom-start"
+          placement="top"
           transition
           disablePortal
+          sx={{
+            marginBottom:"20px"
+          }}
+          
         >
           {({ TransitionProps, placement }) => (
             <Grow
               {...TransitionProps}
               style={{
                 transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
+                  placement === 'top-start' ? 'left top' : 'left top',
               }}
+              
             >
-              <Paper>
-                <ClickAwayListener onClickAway={handleClose}>
+              <Paper
+              
+              className='hvr-bubble-bottom'>
+                <ClickAwayListener onClickAway={handleClose}
+                >
+                  
+                  
                   <MenuList
                     autoFocusItem={open}
                     id="composition-menu"
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
+
+
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <TextField 
+                      onChange = {changeHandler}
+                      id="outlined-password-input" 
+                      label ='Event Name' 
+                      sx={{}}
+                      
+                      
+                      name = "event-name"
+                      onKeyDown={(event) => {
+                        if (event.code === "Enter") {
+                           
+                        }
+                      }}
+              />
+                    <MenuItem sx = {{
+                      
+                      
+                    }}
+                    id = "add-button"
+                    onClick={handleClose}><div style={{
+                      textAlign: "center",
+                      width: "100%",
+                      backgroundColor:"lightgreen",
+                      fontFamily: "Inter",
+                      
+                    }} >Add</div></MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
