@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 function Login() {
 
   const server = process.env.REACT_APP_BACKEND;
+  console.log(server);
 
   const [showlogin, setShowLogin] = useState(false);
   const [loading, setLoading] = useState(false);
