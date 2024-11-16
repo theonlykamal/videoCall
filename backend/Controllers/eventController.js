@@ -44,40 +44,6 @@ const addEventController = expressAsyncHandler( async (req,res) => {
         throw new Error("All necessary inputs fields have not been filled");
         
     }
-
-    
-    //create an entry in the db
-    const event = await eventModel.create( {name ,startTime , endTime});
-
-    if(event)
-    {
-        res.status(201).json({
-            _id: event._id,
-            name : event.name,
-            email : user.email,
-            isAdmin : user.isAdmin,
-            token : generateToken(user._id)
-
-        });
-    }
-    else {
-        res.status(400)
-        throw new Error("Registration error");
-        
-    }
-});
-const addEventControllerJ = expressAsyncHandler( async (req,res) => {
-    const {name ,startTime , endTime , isChecked} = req.body;
-    
-    //check for all fields
-    if(!name || !startTime || !isChecked) 
-    {
-        res.send(400);
-        throw new Error("All necessary inputs fields have not been filled");
-        
-    }
-
-    
     //create an entry in the db
     const event = await eventModel.create( {name ,startTime , endTime});
 
@@ -100,42 +66,7 @@ const addEventControllerJ = expressAsyncHandler( async (req,res) => {
 });
 
 
-
-const addEventControllerP = expressAsyncHandler( async (req,res) => {
-    const {name ,startTime , endTime , isChecked} = req.body;
-    
-    //check for all fields
-    if(!name || !startTime || !isChecked) 
-    {
-        res.send(400);
-        throw new Error("All necessary inputs fields have not been filled");
-        
-    }
-
-    
-    //create an entry in the db
-    const event = await eventModel.create( {name ,startTime , endTime});
-
-    if(event)
-    {
-        res.status(201).json({
-            _id: event._id,
-            name : event.name,
-            email : user.email,
-            isAdmin : user.isAdmin,
-            token : generateToken(user._id)
-
-        });
-    }
-    else {
-        res.status(400)
-        throw new Error("Registration error");
-        
-    }
-});
-
-
-const fetchAllEventsContollerP = expressAsyncHandler(async (req,res) =>{
+const fetchAllEventsContoller = expressAsyncHandler(async (req,res) =>{
     //await new Promise(r => setTimeout(r, 2000));
     const keyword = req.query.search
         ? {
