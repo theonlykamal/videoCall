@@ -1,0 +1,69 @@
+.video-chat {
+    width: 100vw;
+    height: 92vh;
+    display: flex;
+    border-radius: 25px;
+
+    flex-direction: column;
+    background-color: white;
+    color: #292a30;
+
+}
+
+.video-chat .header {
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px;
+
+    margin: 10px;
+    border-radius: inherit;
+    border:solid;
+    border-color: #212228 ;
+}
+  
+.room-id {
+    padding: 10px;
+    border-radius: inherit;
+
+
+}
+.button {
+    padding: 10px;
+    font-family: inherit;
+    font-size: medium;
+
+    border:solid;
+    margin-inline: 10px;
+    border-color: #212228 ;
+    border-radius: 20px;
+
+
+}
+
+.button:hover {
+
+background-color:darkslategrey;
+color: beige;
+
+}
+
+.room-id-input{
+    border-radius: 20px;
+    font-size: medium;
+    padding-inline: 15px;
+    border: solid;
+    border-color: white;
+    border-width: 5px;
+    background-color: #212228;
+    font-family: inherit;
+    width: 300px;
+
+}
+
+iframe {
+    flex: 1;
+    border-width: 0;
+}
