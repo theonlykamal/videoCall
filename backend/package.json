@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "port": "npx peerjs --port 2501"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

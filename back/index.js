@@ -5,6 +5,7 @@ const server2 = require('http').Server(app2);
 const io = require('socket.io')(server2);
 
 
+
 const cors = require('cors');
 const { log } = require('console');
 const corsOptions ={
@@ -43,5 +44,17 @@ io.on('connection', (socket) => {
 io.on('disconnect', () => {
     socket.to(roomId).emit('user-disconnected', userId);
 })
+
+const { ExpressPeerServer } = require("peer");
+
+const peerServer = ExpressPeerServer(server2, {
+	debug: true,
+	path: "/peerjs",
+    proxied: true,
+    port: "443",
+});
+
+app2.use("/", peerServer);
+
 
 server2.listen(2500);
