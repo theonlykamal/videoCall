@@ -139,3 +139,7 @@ textarea:focus {
     align-items: center;
     padding: 5px;
 }
+
+.add-button{
+ background-color: white;
+}

@@ -26,8 +26,8 @@ app.use(express.json());
 const userRoutes = require("./Routes/userRoutes");
 const chatRoutes = require("./Routes/chatRoutes");
 const messageRoutes = require("./Routes/messageRoutes");
-const eventRoutes = require("./Routes/eventRoutes")
-
+const eventRoutes = require("./Routes/eventRoutes");
+const notesRoutes = require("./Routes/notesRoutes");
 
 mongoose.connect(process.env.MONGO_URI);
 const connectDb = async () => {
@@ -53,8 +53,7 @@ app.use("/user",userRoutes);
 app.use("/chat",chatRoutes);
 app.use("/message",messageRoutes);
 app.use("/event",eventRoutes);
-
-
+app.use('/notes', notesRoutes);
 
 const PORT = process.env.PORT;
 

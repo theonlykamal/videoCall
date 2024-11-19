@@ -2,12 +2,14 @@ import Trash from '../icon/Trash';
 import {useRef, useEffect, useState} from 'react';
 import { setNewOffset, setZIndex, autoGrow} from '../util';
 
-const NoteCard = ({note}) => {
+const NoteCard = ({note, handleUpdation}) => {
 // let position = JSON.parse(note.position);
+    //const userData = JSON.parse(localStorage.getItem("userData"));
 
-    const colors = JSON.parse(note.colors);
-    const body = JSON.parse(note.body);
-    const [position, setPositon] = useState(JSON.parse(note.position));
+    // const colors = JSON.parse(note.colors);
+    const body = note.body;
+
+    const [position, setPositon] = useState(note.position);
     
     let mouseStartPos = { x: 0, y: 0 };
  
@@ -29,6 +31,7 @@ const NoteCard = ({note}) => {
         //3 - Update card top and left position.
         const newPosition = setNewOffset(cardRef.current, mouseMoveDir);
         setPositon(newPosition);
+        handleUpdation("`",note.id,newPosition)
     };
     
     const mouseUp = () => {
@@ -49,8 +52,16 @@ const NoteCard = ({note}) => {
 
     useEffect(() => {
     autoGrow(textAreaRef);
+    //console.log(body);
 
     }, [])
+
+    const changeHandler = (e) => {
+         var _body = e.target.value;
+         var pos = {x:500000,y:500000}
+        handleUpdation(_body,note.id,pos);
+        //console.log(_body);
+    }
 
    
     
@@ -61,7 +72,7 @@ const NoteCard = ({note}) => {
     className = "card"
     ref = {cardRef}
     style = {{
-        backgroundColor: colors.colorBody,
+        backgroundColor: "#A6DCE9",
         left: `${position.x}px`,
         top: `${position.y}px`,
         
@@ -70,19 +81,19 @@ const NoteCard = ({note}) => {
 
             <div
                 className="card-header"
-                style={{ backgroundColor: colors.colorHeader }}
+                style={{ backgroundColor: "#9BD1DE" }}
                 onMouseDown = {mouseDown}
             >
                 <Trash />
             </div>
             
-
-
+    
             <div className="card-body">
             <textarea  
                 ref = {textAreaRef}
-                style={{ color: colors.colorText }}
+                style={{ color: "#18181A" }}
                 defaultValue={body}
+                onChange={changeHandler}
                 onInput={() => {
                     autoGrow(textAreaRef);
                }}
