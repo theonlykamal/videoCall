@@ -16,31 +16,47 @@ const allNotes = expressAsyncHandler(async (req,res) => {
                 throw new Error(error.message);
         }
 });
+
+
 const saveNotes = expressAsyncHandler(async (req,res) => {
     try{    
-        // console.log('save', req.body)
-        const notes = req.body;
-        console.log(notes);
-        await Promise.all(notes.map(async (note) => {
-            if(!note) {
-                    return res.sendStatus(400);
+        
+        //console.log('save', req.body.note)
+        
+        //if (!note) return res.sendStatus(400);
+        if( Object.keys(req.body).length > 1){
+            const note1 = req.body.note;
+            try {
+            const note = await Note.create({user: note1.user, body: note1.body, colors: note1.colors, position: note1.position});
+            } catch (err) {
+                console.log(err);
             }
-            {
-                const updatedNote = await Note.findByIdAndUpdate(
-                    note._id,
-                    {body : note.body, position: note.position},
-                    {new : true}
-                    
-                );
-                //console.log(updatedNote);
+            if(note){
+                console.log(note);
+               res.json({
+                _id: note._id,
+                user: note.user,
+                colors : note.colors,
+                body: note.body,
+                position: note.position
+               });
+            }
+        }
 
-                if (!updatedNote) {
-                    return res.status(404).json({ message: 'Note not found' });
-                }
-            } 
-        }));
+        const note = req.body;
+
+        const updatedNote = await Note.findByIdAndUpdate(
+            note._id,
+            {body : note.body, position: note.position},
+            {new : true}
+            
+        );
+        res.sendStatus(200);
+        if (!updatedNote) {
+            return res.status(404).json({ message: 'Note not found' });
+        }
     } catch(err) {
-        res.send(500).json({msg: ERROR , err})
+        res.json({msg: "ERROR" , err})
         
     }
 });

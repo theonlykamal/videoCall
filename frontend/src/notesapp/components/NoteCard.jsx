@@ -2,13 +2,13 @@ import Trash from '../icon/Trash';
 import {useRef, useEffect, useState} from 'react';
 import { setNewOffset, setZIndex, autoGrow} from '../util';
 
-const NoteCard = ({note, handleUpdation}) => {
+const NoteCard = ({note, handlePositionUpdation, handleDataUpdation}) => {
 // let position = JSON.parse(note.position);
     //const userData = JSON.parse(localStorage.getItem("userData"));
 
     // const colors = JSON.parse(note.colors);
     const body = note.body;
-
+    
     const [position, setPositon] = useState(note.position);
     
     let mouseStartPos = { x: 0, y: 0 };
@@ -31,7 +31,8 @@ const NoteCard = ({note, handleUpdation}) => {
         //3 - Update card top and left position.
         const newPosition = setNewOffset(cardRef.current, mouseMoveDir);
         setPositon(newPosition);
-        handleUpdation("`",note.id,newPosition)
+        console.log(newPosition);
+        handlePositionUpdation(note._id,newPosition)
     };
     
     const mouseUp = () => {
@@ -58,9 +59,7 @@ const NoteCard = ({note, handleUpdation}) => {
 
     const changeHandler = (e) => {
          var _body = e.target.value;
-         var pos = {x:500000,y:500000}
-        handleUpdation(_body,note.id,pos);
-        //console.log(_body);
+         handleDataUpdation(note._id, _body);
     }
 
    
@@ -86,8 +85,7 @@ const NoteCard = ({note, handleUpdation}) => {
             >
                 <Trash />
             </div>
-            
-    
+
             <div className="card-body">
             <textarea  
                 ref = {textAreaRef}

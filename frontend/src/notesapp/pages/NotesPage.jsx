@@ -4,7 +4,7 @@ import NoteCard from '../components/NoteCard';
 import axios from "axios";
 import { IconButton } from '@mui/material';
 import '../index.css'
-import { Note } from '@material-ui/icons';
+
 const NotesPage = () => {
 	const userData = JSON.parse(localStorage.getItem("userData"));
 	const server = process.env.REACT_APP_BACKEND;
@@ -14,50 +14,49 @@ const NotesPage = () => {
 	const keyUpTimer = useRef(null);
 	useEffect(() => {
 		getAllNotes();
-		//console.log(notes.body);
 	}, []);
-
-
-	  function newNote() {
-		
-	  }
-	  function delNotes() {
-		
-	  }
-	 const saveNote = async () => {
-		const response =  await axios.post(`${server}/notes/save`, notes, {
+	const addNoteonClick = async () => {
+		const newNote = {note: {body: "", user: user._id, colors: "", position: {x: 503, y: 26}}, new: true};
+		const config = {
 			headers: {
-			  'Content-Type': 'application/json', // Optional, but ensures proper format
+			"Content-type": "application/json",
 			},
-		  });
-		  console.log("save")
-	  }
+		};
 
-	  const saveHandler = async () =>  {
-
-		try {
-		  
-		  //config 
-		  const config = {
-			headers: {
-			  "Content-type": "application/json",
-			},
-		  };
-
-		  const response = await axios.post(
+		const response = await axios.post(
 			`${server}/notes/save/`,
-			notes,
+			newNote,
 			config
-		  );
-	
+		);
 
-		} catch (error) {
-		  
-		  console.log(error.reponse);
+		console.log(response.data);
 
+  
+	}
+	  const saveHandler = async () =>  {
+		for (let i = 0; i < notes.length; i++) {
+			try {
+			//config 
+			const config = {
+				headers: {
+				"Content-type": "application/json",
+				},
+			};
+
+			const response = await axios.post(
+				`${server}/notes/save/`,
+				notes[i],
+				config
+			);
+			console.log(response.status);
+
+			} catch (error) {
+			
+			console.log(error.reponse);
+
+			}
 		}
-		getAllNotes()
-	
+		//getAllNotes	()
 	  };
 
 
@@ -75,29 +74,29 @@ const NotesPage = () => {
 
 	  }
 
-	  function handleUpdation (data, id, pos) {
+	  const handleDataUpdation = async (id, data) => {
+		console.log("before updation", notes);
+		var temp = notes;
+		for (let i = 0; i < temp.length; i++) {
+			if (temp[i]._id == id) {
+				temp[i].body = data;
+			}	
+		}
+		setNotes(temp);
+		console.log("after updation", notes);
 
-		
-		const newNotes = notes.map((note) => {
-			var temp = Object.assign({},note)
-			
-			if(temp.id == id && pos.x == 500000 && pos.y == 500000){
-				
-				temp.body = data;
-				return temp;
-			}
-			else if(temp.id == id && data == "`"){
-				temp.position = pos
-				return temp
-			}
-			else{
-				return temp
-			}
-		});
 
-		setNotes(newNotes)
-		//console.log(notes);	
-		//saveHandler();
+	  }
+
+	  const handlePositionUpdation = async (id, pos) => {
+		var temp = notes;
+		for (let i = 0; i < temp.length; i++) {
+			if (temp[i]._id == id) {
+				temp[i].position = pos;
+			}	
+		}
+		setNotes(temp);
+		console.log("after", notes);
 	  }
 
   return (
@@ -105,7 +104,7 @@ const NotesPage = () => {
 		<IconButton sx = {{
 				backgroundColor:"white"
 			}}
-			onClick={newNote}
+			onClick={addNoteonClick}
 		>
 			+
 		</IconButton>
@@ -125,7 +124,8 @@ const NotesPage = () => {
 		))
 		}	 */}
 		{notes.map(note => (
-			<NoteCard key = {note._id}note = {note} handleUpdation = {handleUpdation}/>
+			
+			<NoteCard note = {note} handlePositionUpdation = {handlePositionUpdation} handleDataUpdation = {handleDataUpdation}/>
 		))
 		}
 
