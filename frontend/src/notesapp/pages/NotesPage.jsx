@@ -28,8 +28,7 @@ const NotesPage = () => {
 			newNote,
 			config
 		);
-
-		console.log(response.data);
+		getAllNotes();
 
   
 	}

@@ -33,13 +33,7 @@ const saveNotes = expressAsyncHandler(async (req,res) => {
             }
             if(note){
                 console.log(note);
-               res.json({
-                _id: note._id,
-                user: note.user,
-                colors : note.colors,
-                body: note.body,
-                position: note.position
-               });
+            res.sendStatus(200);
             }
         }
 
