@@ -108,7 +108,6 @@ const NotesPage = () => {
 			"Content-type": "application/json",
 			},
 		};
-
 		const response = await axios.post(
 			`${server}/notes/save/`,
 			delMessage,
@@ -121,7 +120,6 @@ const NotesPage = () => {
 				temp.push(notes[i]);
 			}
 		}
-
 		setNotes(temp);
 	  }
   return (
