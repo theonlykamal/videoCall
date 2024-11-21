@@ -159,9 +159,11 @@
 
 .day-events-container {
 
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
+    
+    
 
 
     /* border:solid; */
@@ -182,8 +184,8 @@
 .day-events .on-paper {
 
     
-
-
+   
+    
 
     /* border:solid; */
     border-width: 3px;
@@ -211,7 +213,10 @@
 
 .day-events .list{
 
-    
+    max-height: 291px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #fff;
 
     /* border:solid; */
     border-width: 5px;
@@ -413,7 +418,10 @@
 
     display: flex;
     
-    flex: 1;
+    flex: 1 1;
+    max-width: 1000px;
+    flex-wrap: wrap;
+
     
     
 
@@ -442,7 +450,7 @@
     /* margin-block: 20px; */
 
         .date{
-            font-size: xxx-large;
+            font-size: 50px;
             /* color: #2bca6d; */
         
         }
@@ -513,7 +521,7 @@
 
 .all-day-select .date{
 
-    font-size: xxx-large;
+    font-size: 50px;
 }
 
 

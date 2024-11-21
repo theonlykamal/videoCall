@@ -10,6 +10,10 @@ import { Outlet } from 'react-router-dom';
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
 import { useDispatch } from "react-redux";
 
+import "@fontsource/inter";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+
 
 export const myContext = createContext();
 

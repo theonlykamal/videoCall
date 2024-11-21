@@ -9,7 +9,7 @@ const Empty = () => {
     
 
     <div className = "open-msg-pad">
-        <p className = "open-msg">Open an app</p>
+        <p className = "open-msg"></p>
     </div>
     
      

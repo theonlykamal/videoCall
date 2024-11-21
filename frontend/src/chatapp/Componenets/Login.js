@@ -1,10 +1,13 @@
 import React ,{ useState }from 'react'
-import pic from '../icons8-productivity-64.png'
+import pic from '../desk.gif'
 import { Backdrop, Button, CircularProgress, TextField } from '@mui/material';
 import './Mycss.css';
 import Toaster from "./Toaster";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "@fontsource/inter";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
 
 
 
@@ -125,9 +128,13 @@ function Login() {
 
 
 
-    <div className='login-container'>
+    <div className='login-container' style={{
+      fontFamily: "Inter"
+    }}>
         <div className='image-container'>
-            <img src = {pic} alt='Logo' className='welcome-logo' />
+            <img  style = {{
+              borderRadius:"100px",
+            }}src = {pic} alt='Logo' className='welcome-logo' />
         </div>
 
 

@@ -1,18 +1,29 @@
 .main-container {
-    
+    font-family: "Inter";
     background-color: rgb(64, 64, 64);
     height: 92vh;
     width: 100vw;
     display: flex;
     border-radius: 30px;
     margin-top: 10px;
+
+    background-image: url(./chat.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: 900px;
+    background-position-y: 200px;
+    background-size: 400px;
+
 }
 .sidebar-container {
-    
+    font-family: "Inter";
     background-color: #2f4550;
     flex: 0.3;
     display: flex;
     flex-direction: column;
+
+    
+ 
 }
 .chatarea-container {
     
@@ -280,9 +291,10 @@
 
 }
 .login-container {
+    font-family: Inter;
     height: 100vh;
     width: 100vw;
-    background-color: rgb(44, 48, 46);
+    background-color: #2f4550;
     border-radius: 20px;
     display: flex;
 
@@ -296,7 +308,7 @@
 }
 .login-box {
     flex: 0.7;
-    background-color: rgb(215, 250, 249);
+    background-color: #fff;
     border-radius: 20px;
     margin: 20px;
     border-radius: 20px;
@@ -329,7 +341,7 @@
 .list-tem {
     display: flex;
     align-items: center;
-    background-color: rgb(43, 235, 238);
+    background-color: #fff;
     border-radius: 20px;
     padding: 10px 5px;
     margin: 10px;

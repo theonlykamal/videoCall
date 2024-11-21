@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { allEvents } from '../assets/fakeEvents';
 import CalenderPage from './CalenderPage';
 import EventsPage from './EventsPage';
@@ -11,7 +11,16 @@ const MainPage = () => {
   let [todayDate,setTodayDate] = useState(today);
   let [selectedDay,setSelectedDay] = useState(today);
   
-  let [events,setEvents] = useState(allEvents);
+  let userEvents = JSON.parse(localStorage.getItem("userEvents"));
+  if(!userEvents){
+    userEvents = allEvents
+  }
+
+  console.log(userEvents);
+  
+  let [events,setEvents] = useState(userEvents);
+  localStorage.setItem("userEvents", JSON.stringify(events));
+  //setEvents(userEvents)
   let nextId = events.length+1;
 
   function addEventHandler( nameEve ) {
@@ -23,32 +32,47 @@ const MainPage = () => {
         setEvents([
           ...events,
           { 
-            id: nextId, 
+            id: ++nextId, 
             name: nameEve ,
             imageUrl: "",
             startDatetime: startTime,
             endDatetime: endTime,
+            done: false
           }
         ]);
       
     }
 
-    
+    localStorage.setItem("userEvents", JSON.stringify(events));
   }
+ 
+
+  
+
 
   function doneEventHandler (id) {
-   const newEvents =  events.map((event) => {
+   const newEvents = []; 
+   events.map((event) => {
     var temp = Object.assign({},event)
-      if (temp.id == id) {
-        temp.done = !temp.done
-        return temp;
+      if (temp.id == id || temp.done) {
+        temp.done = true
       } else {
-        return temp
+        newEvents.push(temp)
       }
     })
     setEvents(newEvents)
+    localStorage.setItem("userEvents", JSON.stringify(events));
   }
 
+  useEffect(() => {
+    
+  
+    return () => {
+      
+    }
+
+    doneEventHandler()
+  }, [])
 
   return (
 	<div className='main-page'>

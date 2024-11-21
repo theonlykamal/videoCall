@@ -4,17 +4,28 @@ import NoteCard from '../components/NoteCard';
 import axios from "axios";
 import { IconButton } from '@mui/material';
 import '../index.css'
+import { useNavigate } from 'react-router-dom';
 
 const NotesPage = () => {
+
 	const userData = JSON.parse(localStorage.getItem("userData"));
+	const nav = useNavigate();
+
+	useEffect(() => {
+		getAllNotes();
+		if (!userData) {
+			console.log("User not Authenticated");
+			nav("/et/profile");
+		  }
+		
+	}, []);
+	
 	const server = process.env.REACT_APP_BACKEND;
 	const [user, setUser] = useState([userData.data]);
 	const [notes, setNotes] = useState([]);
-	const [saving, setSaving] = useState(false);
-	const keyUpTimer = useRef(null);
-	useEffect(() => {
-		getAllNotes();
-	}, []);
+	//const [saving, setSaving] = useState(false);
+	//const keyUpTimer = useRef(null);
+	
 	const addNoteonClick = async () => {
 		const newNote = {note: {body: "", user: userData.data._id, colors: "xyz", position: {x: 503, y: 26}}, new: true};
 		const config = {
@@ -128,6 +139,19 @@ const NotesPage = () => {
 				backgroundColor:"white"
 			}}
 			onClick={addNoteonClick}
+			id='cs-button'
+			style={{
+				width: "40px",
+				height: "40px",
+				position: "absolute",
+				zIndex: "99990",
+				top : "45px",
+				left:"45px",
+				fontSize: "40px",
+				borderRadius: "9999px",
+				display: "flex",
+				alignItems: "center",
+			}}
 		>
 			+
 		</IconButton>
@@ -136,6 +160,20 @@ const NotesPage = () => {
 				backgroundColor:"white"
 			}}
 			onClick={saveHandler}
+			id='cs-button'
+			style={{
+				// width: "40px",
+				 height: "50px",
+				position: "absolute",
+				zIndex: "99990",
+				top : "40px",
+				left:"100px",
+
+				fontSize: "35px",
+				borderRadius: "9999px",
+				display: "flex",
+				alignItems: "center",
+			}}
 
 		>
 			save

@@ -35,6 +35,7 @@ app2.get('/:room', (req, res) => {
 })
 
 io.on('connection', (socket) => {
+    console.log("hi")
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId);
         socket.to(roomId).emit('user-connected', userId);

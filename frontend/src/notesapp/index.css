@@ -35,6 +35,7 @@ body {
     border-color: red;
 
     font-size: xx-large;
+
     
 }
 
@@ -47,7 +48,7 @@ body {
 
 
 .nav-bar a{
-    background-color: inherit;
+    background-color: black;
     border-style:solid;
     border-radius: 20px;
     margin-left: 10px;
@@ -93,6 +94,10 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background-image: url(./welcome.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 .open-msg {
     color:rgba(240, 248, 255, 0.555);
@@ -142,4 +147,11 @@ textarea:focus {
 
 .add-button{
  background-color: white;
+}
+
+#cs-button:hover{
+    color: white;
+    border: solid;
+    border-width: 2px;
+
 }

@@ -18,12 +18,12 @@ const Everything = () => {
     
     <div >
 
-     <div className='et'> 
+     <div className='et' > 
         <div className = 'nav-bar'>
           
             
                 
-                <NavLink className = "link" exact to ='profile'>🪴</NavLink>
+                {/* <NavLink className = "link" exact to ='profile'>🪴</NavLink> */}
                 <NavLink className = "link" exact to ='video'>📞</NavLink>
                 <NavLink className = "link" exact to = 'app'>🗨️</NavLink>
                 <NavLink className = "link" exact to ='notes'>📝</NavLink>

@@ -79,7 +79,7 @@ return (
 
 
       </div>
-        <div class="" style={{display: "flex"}}>
+        <div class="button-wrapper" style={{display: "flex"}}>
 
         <button className="button"
             onClick={reloadHandler}
@@ -106,14 +106,15 @@ return (
           </button>
         </div>
       </div>
-      <iframe
-          allow = {"camera " + `${url}; microphone ${url}`}
-          src={url}
-
-      >
-          
-          
-      </iframe>
+      <div class="iframe-wrapper">
+        <iframe
+            allow = {"camera " + `${url}; microphone ${url}`}
+            src={url}
+        >
+        
+        
+        </iframe>
+      </div>
 
   </div>
 )

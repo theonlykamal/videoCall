@@ -146,7 +146,7 @@ export default function SideBar() {
                     "chat/" +
                       conversation._id +
                       "&" +
-                      conversation.users[1].name
+                      chatName
                   );
                 }}
               >

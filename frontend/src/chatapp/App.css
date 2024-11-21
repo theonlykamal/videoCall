@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: "Inter";
 }
 .App {
   background-color: rgb(138, 243, 241);
@@ -7,5 +8,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
   
 }

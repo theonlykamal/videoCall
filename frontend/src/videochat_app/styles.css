@@ -22,11 +22,14 @@
     border-radius: inherit;
     border:solid;
     border-color: #212228 ;
+    
 }
   
 .room-id {
     padding: 10px;
     border-radius: inherit;
+    background-color: rgba(172, 255, 47, 0.507);
+    border-radius: 10px;
 
 
 }
@@ -66,4 +69,32 @@ color: beige;
 iframe {
     flex: 1;
     border-width: 0;
+    
+
+    background-image: url(./s12.gif);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    
+
+}
+
+.iframe-wrapper {
+    flex: 1;
+    display: flex;
+    border-width: 0;
+    background-color: #212228;
+
+}
+
+@media (max-width: 800px) {
+    .video-chat .header {
+        flex-direction: column;
+    }
+    .button-wrapper{
+        flex-direction: column;
+    }
+    .room-id-input{
+        height: 50px
+    }
 }
