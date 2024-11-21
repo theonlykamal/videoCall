@@ -131,7 +131,7 @@ export default function SideBar() {
                     <p className = "con-icon"> {chatName[0]} </p>
                     <p className = "con-title"> {chatName} </p>
                     <p className = "con-lastMessage">
-                      No previous Messages, click here to start a new chat
+                      No previous Messages
                     </p> 
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function SideBar() {
               >
                 <p className = "con-icon"> {chatName[0]} </p>
                 <p className = "con-title">{chatName}</p>
-                <p className = "con-lastMessage">{conversation.latestMessage.content}</p>
+                <p className = "con-lastMessage">{conversation.latestMessage.content.length > 15 ? (conversation.latestMessage.content.substring(0,15)+"...") : conversation.latestMessage.content }</p>
                 
               </div>
             );
