@@ -1,8 +1,9 @@
 import Trash from '../icon/Trash';
 import {useRef, useEffect, useState} from 'react';
 import { setNewOffset, setZIndex, autoGrow} from '../util';
-
-const NoteCard = ({note, handlePositionUpdation, handleDataUpdation}) => {
+import { IconButton } from '@mui/material';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+const NoteCard = ({note, handlePositionUpdation, handleDataUpdation, delHandler}) => {
 // let position = JSON.parse(note.position);
     //const userData = JSON.parse(localStorage.getItem("userData"));
 
@@ -62,7 +63,9 @@ const NoteCard = ({note, handlePositionUpdation, handleDataUpdation}) => {
          handleDataUpdation(note._id, _body);
     }
 
-   
+   const delHandler2 = () => {
+    delHandler(note._id);
+   }
     
     
 
@@ -83,7 +86,10 @@ const NoteCard = ({note, handlePositionUpdation, handleDataUpdation}) => {
                 style={{ backgroundColor: "#9BD1DE" }}
                 onMouseDown = {mouseDown}
             >
-                <Trash />
+                <IconButton onClick = {delHandler2}>
+                    <DeleteForeverIcon/>
+                </IconButton>
+                
             </div>
 
             <div className="card-body">

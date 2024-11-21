@@ -16,7 +16,7 @@ const NotesPage = () => {
 		getAllNotes();
 	}, []);
 	const addNoteonClick = async () => {
-		const newNote = {note: {body: "", user: user._id, colors: "", position: {x: 503, y: 26}}, new: true};
+		const newNote = {note: {body: "", user: userData.data._id, colors: "xyz", position: {x: 503, y: 26}}, new: true};
 		const config = {
 			headers: {
 			"Content-type": "application/json",
@@ -28,9 +28,11 @@ const NotesPage = () => {
 			newNote,
 			config
 		);
+		newNote._id = response.data._id;
+		var temp = notes;
+		temp.push(newNote.note);
+		setNotes(temp);
 		getAllNotes();
-
-  
 	}
 	  const saveHandler = async () =>  {
 		for (let i = 0; i < notes.length; i++) {
@@ -98,6 +100,30 @@ const NotesPage = () => {
 		console.log("after", notes);
 	  }
 
+	  const delHandler = async (id) => {
+		console.log("hi");
+		const delMessage = {note: {_id: id}, new: false};
+		const config = {
+			headers: {
+			"Content-type": "application/json",
+			},
+		};
+
+		const response = await axios.post(
+			`${server}/notes/save/`,
+			delMessage,
+			config
+		);
+		console.log(response.data);
+		const temp = [];
+		for (var i = 0; i < notes.length; i++) {
+			if (notes[i]._id != id) {
+				temp.push(notes[i]);
+			}
+		}
+
+		setNotes(temp);
+	  }
   return (
 	<div>
 		<IconButton sx = {{
@@ -124,7 +150,7 @@ const NotesPage = () => {
 		}	 */}
 		{notes.map(note => (
 			
-			<NoteCard note = {note} handlePositionUpdation = {handlePositionUpdation} handleDataUpdation = {handleDataUpdation}/>
+			<NoteCard note = {note} handlePositionUpdation = {handlePositionUpdation} handleDataUpdation = {handleDataUpdation} delHandler = {delHandler}/>
 		))
 		}
 

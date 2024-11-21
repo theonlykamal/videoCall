@@ -19,39 +19,57 @@ const allNotes = expressAsyncHandler(async (req,res) => {
 
 
 const saveNotes = expressAsyncHandler(async (req,res) => {
-    try{    
         
         //console.log('save', req.body.note)
         
         //if (!note) return res.sendStatus(400);
-        if( Object.keys(req.body).length > 1){
-            const note1 = req.body.note;
+        if( Object.keys(req.body).length == 2) {
+            if (req.body.new) {
+                const note1 = req.body.note;
+                console.log(note1);
+                try {
+                    const note = await Note.create({
+                        colors: note1.colors,
+                        user: note1.user, 
+                        body: note1.body, 
+                        position: note1.position
+                    });
+                    if (note) {            
+                        res.status(201).json({_id: note._id});
+                    }   
+                } catch (err) {
+                    console.log(err);
+                }
+        } 
+        else {
             try {
-            const note = await Note.create({user: note1.user, body: note1.body, colors: note1.colors, position: note1.position});
+                console.log("hibuyd");
+                Note.deleteOne({_id: req.body.note._id}).then((result) => {console.log(result)});
+                res.sendStatus(200);
             } catch (err) {
                 console.log(err);
             }
-            if(note){
-                console.log(note);
-            res.sendStatus(200);
+        }
+            
+        } else {
+            try {
+                const note = req.body;
+                console.log("save notes", note);
+                const updatedNote = await Note.findByIdAndUpdate(
+                    note._id,
+                    {body : note.body, position: note.position},
+                    {new : true}
+                    
+                );
+                res.sendStatus(200);
+                if (!updatedNote) {
+                    return res.status(404).json({ message: 'Note not found' });
+                }
+            }
+            catch(err) {
+                res.json({msg: "ERROR" , err})
+                
             }
         }
-
-        const note = req.body;
-
-        const updatedNote = await Note.findByIdAndUpdate(
-            note._id,
-            {body : note.body, position: note.position},
-            {new : true}
-            
-        );
-        res.sendStatus(200);
-        if (!updatedNote) {
-            return res.status(404).json({ message: 'Note not found' });
-        }
-    } catch(err) {
-        res.json({msg: "ERROR" , err})
-        
-    }
 });
 module.exports = { allNotes, saveNotes };

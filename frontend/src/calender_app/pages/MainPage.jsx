@@ -12,7 +12,7 @@ const MainPage = () => {
   let [selectedDay,setSelectedDay] = useState(today);
   
   let [events,setEvents] = useState(allEvents);
-  let nextId = events.length;
+  let nextId = events.length+1;
 
   function addEventHandler( nameEve ) {
     if (nameEve.length > 0) {
@@ -23,7 +23,7 @@ const MainPage = () => {
         setEvents([
           ...events,
           { 
-            id: nextId++, 
+            id: nextId, 
             name: nameEve ,
             imageUrl: "",
             startDatetime: startTime,

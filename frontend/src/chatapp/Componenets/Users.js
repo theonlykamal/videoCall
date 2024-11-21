@@ -12,7 +12,7 @@ function Users() {
   
     const { refresh, setRefresh } = useContext(myContext);
 
-    const server = process.env.BACKEND;
+    const server = process.env.REACT_APP_BACKEND;
     const [users, setUsers] = useState([]);
     const [query, setQuery] = useState([]);
 
