@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import "./styles.css"
+import "./styles.css";
+import { useNavigate } from "react-router-dom";
+import { IconButton } from '@mui/material';
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+
+
 
 
 const VideoChatApp = () => {
@@ -8,7 +13,8 @@ const VideoChatApp = () => {
   console.log(server)
   const [roomId, setRoomId] = useState("");
   const [url, setURL] = useState("");
-  const [refersh, setRefresh] = useState("");
+
+  const navigate = useNavigate();
 
   const getRoomIdHandler = async () =>  {
       try { 
@@ -81,11 +87,14 @@ return (
       </div>
         <div class="button-wrapper" style={{display: "flex"}}>
 
-        <button className="button"
-            onClick={reloadHandler}
+        <IconButton
+            onClick={() => {
+              localStorage.removeItem("userData");
+              navigate("/");
+            }}
           >
-            RELOAD
-          </button>
+            <ExitToAppIcon />
+          </IconButton>
 
         <button className="button"
             onClick={restHandler}
